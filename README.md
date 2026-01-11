@@ -2,7 +2,7 @@
 
 Aplicación Next.js para análisis de sentimiento de comentarios de productos de calzado.
 
-## 🚀 Despliegue Local
+## 🚀 Despliegue Local d
 
 ### Requisitos
 - Node.js 20+ o 22+
