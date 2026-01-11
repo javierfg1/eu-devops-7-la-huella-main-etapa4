@@ -1,0 +1,33 @@
+name: La Huella Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  localstack-job:
+    runs-on: self-hosted   # runner propio (nodo 1)
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Parar contenedores existentes
+        run: |
+          docker compose down || true
+
+      - name: Actualizar imágenes Docker
+        run: |
+          docker compose pull
+
+      - name: Iniciar aplicación
+        run: |
+          docker compose up -d
+
+      - name: Esperar a que app esté lista
+        run: |
+          echo "Esperando 60 segundos a Localstack..."
+          sleep 120
+  
